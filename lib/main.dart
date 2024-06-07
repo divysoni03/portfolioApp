@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,51 +12,114 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: portfolioApp(),
+    return const MaterialApp(
+      home: PortfolioApp(),
     );
   }
 }
 
-class portfolioApp extends StatelessWidget {
-  portfolioApp({super.key});
+class PortfolioApp extends StatelessWidget {
+  const PortfolioApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.blueAccent,
         title: const Text(
-          'Divy Soni',
+          'PortFolio',
           style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontFamily: 'rubik',
-            fontSize: 35,
+            fontSize: 27,
           ),
         ),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           children: [
-            CircleAvatar(
+            const SizedBox(
+              height: 25,
+            ),
+            const CircleAvatar(
               radius: 100,
               backgroundImage: AssetImage('images/profile-pic.png'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'I\'m Divy Soni',
               style: TextStyle(fontSize: 30),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               '18 | Beginner Programmer | Front-end Dev | Flutter Dev',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 15,
+                fontFamily: 'rubik',
+                fontStyle: FontStyle.normal,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      launchUrlString("https://github.com/divysoni03");
+                    },
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.blueAccent),
+                    ),
+                    child: const Text(
+                      'GitHub',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      launchUrlString(
+                          "https://www.linkedin.com/in/divysoni03/");
+                    },
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.blueAccent),
+                    ),
+                    child: const Text(
+                      "Linkedin",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      launchUrlString("mailto:divysoni303@gmail.com");
+                    },
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          WidgetStatePropertyAll(Colors.blueAccent),
+                    ),
+                    child: const Text(
+                      "Gmail",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  )
+                ],
               ),
             ),
           ],
