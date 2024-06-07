@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
@@ -8,22 +6,26 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PortfolioApp(),
     );
   }
 }
 
 class PortfolioApp extends StatelessWidget {
-  const PortfolioApp({super.key});
+  const PortfolioApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: const Color.fromRGBO(234, 255, 253, 1),
       appBar: AppBar(
         centerTitle: true,
@@ -33,14 +35,25 @@ class PortfolioApp extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 27,
+            letterSpacing: 1.7,
             color: Colors.white,
           ),
         ),
+        leading: IconButton(
+          onPressed: () {
+            scaffoldKey.currentState!.openDrawer();
+          },
+          icon: const Icon(Icons.menu),
+          color: Colors.white,
+        ),
+      ),
+      drawer: const Drawer(
+        backgroundColor: Color.fromRGBO(201, 240, 255, 1),
       ),
       body: Center(
         child: Container(
           width: 400,
-          height: 590,
+          height: 450,
           decoration: BoxDecoration(
             color: const Color.fromRGBO(146, 188, 234, .6),
             borderRadius: BorderRadius.circular(20),
@@ -48,7 +61,7 @@ class PortfolioApp extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 80,
+                height: 30,
               ),
               const CircleAvatar(
                 radius: 100,
@@ -83,11 +96,11 @@ class PortfolioApp extends StatelessWidget {
                       onPressed: () {
                         launchUrlString("https://github.com/divysoni03");
                       },
-                      style: const ButtonStyle(
-                        padding: WidgetStatePropertyAll(
-                            EdgeInsets.symmetric(horizontal: 26, vertical: 16)),
-                        backgroundColor: WidgetStatePropertyAll(
-                            Color.fromRGBO(26, 101, 158, .85)),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 26, vertical: 16),
+                        backgroundColor:
+                            const Color.fromRGBO(26, 101, 158, .85),
                       ),
                       child: const Text(
                         'GitHub',
@@ -102,11 +115,11 @@ class PortfolioApp extends StatelessWidget {
                         launchUrlString(
                             "https://www.linkedin.com/in/divysoni03/");
                       },
-                      style: const ButtonStyle(
-                        padding: WidgetStatePropertyAll(
-                            EdgeInsets.symmetric(horizontal: 26, vertical: 16)),
-                        backgroundColor: WidgetStatePropertyAll(
-                            Color.fromRGBO(26, 101, 158, .85)),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 26, vertical: 16),
+                        backgroundColor:
+                            const Color.fromRGBO(26, 101, 158, .85),
                       ),
                       child: const Text(
                         "Linkedin",
@@ -120,11 +133,11 @@ class PortfolioApp extends StatelessWidget {
                       onPressed: () {
                         launchUrlString("mailto:divysoni303@gmail.com");
                       },
-                      style: const ButtonStyle(
-                        padding: WidgetStatePropertyAll(
-                            EdgeInsets.symmetric(horizontal: 26, vertical: 16)),
-                        backgroundColor: WidgetStatePropertyAll(
-                            Color.fromRGBO(26, 101, 158, .85)),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 26, vertical: 16),
+                        backgroundColor:
+                            const Color.fromRGBO(26, 101, 158, .85),
                       ),
                       child: const Text(
                         "Gmail",
