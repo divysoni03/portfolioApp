@@ -1,36 +1,24 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+void main() => runApp(MaterialApp(
+  home : Scaffold(
+    appBar: AppBar(
+      title: const Text('Divy Soni Portfolio'),
+      centerTitle: true,
+      backgroundColor: Colors.deepOrangeAccent,
+    ),
+    body: const Center(
+      child: Text(
+        'hello from divy !!! Its my portfolio application ',
+        style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: /*FontWeight.w500*/ FontWeight.bold,letterSpacing: 2.0),
       ),
-      home : const HelloFlutter(),
-    );
-  }
-}
-
-class HelloFlutter extends StatelessWidget {
-  const HelloFlutter({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold (
-      body: Container(
-        alignment: Alignment.center,
-        child: const Text('hello chetanbhai'),
-      ),
-    );
-  }
-}
+    ),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {},
+      backgroundColor: Colors.deepOrangeAccent,
+      child: const Icon(Icons.add),
+    ),
+  ),
+));
